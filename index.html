@@ -222,6 +222,12 @@ border-radius: 4px;
       <textarea type="text" id="text" class="textarea" ng-model="xbmcIP" placeholder="Your XBMC ip"></textarea>
     </p>
 
+ <p>
+      <label for="text">Bookmarklet code:</label>
+    </p>
+
+
+
     <p>
       <textarea class="codearea" id="texto">javascript:(function()%7Bvar regex %3D %2F'file'%3A '(.%2B%3F)'%2F%3Bvar url %3D document.URL%3Bvar ein %3D %2Feinthusan%2F%3Bvar allmyv %3D %2Fallmyvideos%2F%3Bvar vidto %3D %2Fvidto%2F%3Bvar playedto %3D %2Fplayed%2F%3Bvar megafiles %3D %2Fmegafiles%2F%3Bvar bestreams %3D %2Fbestreams%2F%3Bvar cbs %3D %2Fcbs%2F%3Bvar vk %3D %2Fvk%2F%3Bvar streamcloud %3D %2Fstreamcloud%2F%3Bvar vidspot %3D %2Fvidspot%2F%3Bvar magnovideo %3D %2Fmagnovideo%2F%3Bvar mega %3D %2Fmega%2F%3Bif(allmyv.test(url))%7Bregex%3D %2F"file" %3A "(.%2B%3F)"%2C%2F%3B%7Delse if(vidto.test(url))%7Bregex %3D %2Ffile_link %3D '(.%2B%3F)'%2F%3B%7Delse if(playedto.test(url))%7Bregex %3D %2Ffile%3A "(.%2B%3F)"%2F%3B%7Delse if(megafiles.test(url))%7Bregex %3D %2Ffile_link %3D '(.%2B%3F)'%2F%3B%7Delse if(bestreams.test(url))%7Bregex %3D %2Ffile%3A "(.%2B%3F)"%2F%3B%7Delse if(cbs.test(url))%7Bregex %3D %2Fvideo.settings.pid %3D '(.*%3F)'%2F%3B%7Delse if(vk.test(url))%7Bregex %3D %2F"url360"%3A"(.%2B%3F)"%2F%3B%7Delse if(streamcloud.test(url))%7Bregex %3D %2Ffile%3A "(.%2B%3F)"%2F%3B%7Delse if(vidspot.test(url))%7Bregex %3D %2F"file" %3A "(.%2B%3F)"%2C%2F%3B%7Delse if(magnovideo.test(url))%7Bregex %3D %2Fswf%3Fflv%3D(.%2B%3F)%2F%3B%7Dconsole.log(regex)%3Bvar StreamUrl %3D regex.exec(document.body.innerHTML)%5B1%5D%3Bvar ip %3D '{{xbmcIP}}'%3Bvar xbmc %3D 'http%3A%2F%2F'%2Bip%2B'%3A80%2Fjsonrpc%3Frequest%3D%7B"jsonrpc"%3A"2.0"%2C"method"%3A"Player.Open"%2C"params"%3A%7B"item"%3A%7B"file"%3A"'%2BStreamUrl%2B'"%7D%7D%7D'%3Bconsole.log(xbmc)%3BhttpGet(xbmc)%3Bfunction httpGet(theUrl)%7Bvar xmlHttp %3D null%3BxmlHttp %3D new XMLHttpRequest()%3BxmlHttp.open( "GET"%2C theUrl%2C false )%3BxmlHttp.send( null )%3B%7D%7D)()</textarea>
     </p>
@@ -232,16 +238,12 @@ border-radius: 4px;
    </span>
     </p> -->
 
-    <p>
-      <label for="text">Introduce your XBMC ip:</label>
-    </p>
-
-    <a class="bookmarklet" ng-href="{{enlace()}}">Send to XBMC</a>
+   
 
   </div>
 
   <footer>
-    <p class="text-center">Edited with <span class="love">♥</span> by Adrian</p>
+    <p class="text-center">Edited with <span class="love">♥</span> by Adrian from <a href="http://janantala.github.io/angular-qr/demo/">Jan Antala</a></p>
     <p class="text-center">2014 Licensed under <a href="http://opensource.org/licenses/MIT">MIT</a></p>
   </footer>
 
