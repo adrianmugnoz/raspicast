@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>angular-qr</title>
+  <title>raspicast</title>
   <link href='http://fonts.googleapis.com/css?family=Titillium+Web:200,300' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'>
   <link rel="icon" type="image/png" href="img/logo.png">
@@ -161,30 +161,26 @@
   <div ng-controller="AdaptiveCtrl">
 
   <header>
-    <h1 class="text-center title">angular-qr</h1>
-    <p class="text-center title"><i>QR code generator for AngularJS.</i></p>
+    <h1 class="text-center title">raspicast</h1>
+    <p class="text-center title"><i>Bookmarklet to use your Raspberry Pi with XBMC like a Chromecast.</i></p>
 
-    <a href="https://github.com/janantala/angular-qr"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png" alt="Fork me on GitHub"></a>
-
-    <p class="code">
-      <span class="code-prompt code-vial">❯</span> bower install <span class="code-yellow">angular-qr</span>
-    </p>
+    <a href="https://github.com/adrianmugnoz/raspicast"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png" alt="Fork me on GitHub"></a>
 
     <p>
-      <iframe src="http://ghbtns.com/github-btn.html?user=janantala&repo=angular-qr&type=watch&count=true"
+      <iframe src="http://ghbtns.com/github-btn.html?user=adrianmugnoz&repo=raspicast&type=watch&count=true"
     allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
 
-      <iframe src="http://ghbtns.com/github-btn.html?user=janantala&repo=angular-qr&type=fork"
+      <iframe src="http://ghbtns.com/github-btn.html?user=adrianmugnoz&repo=raspicast&type=fork"
     allowtransparency="true" frameborder="0" scrolling="0" width="53" height="20"></iframe>
 
-      <iframe src="http://ghbtns.com/github-btn.html?user=janantala&type=follow"
+      <iframe src="http://ghbtns.com/github-btn.html?user=adrianmugnoz&type=follow"
       allowtransparency="true" frameborder="0" scrolling="0" width="132" height="20"></iframe>
     </p>
   </header>
 
   <div class="body">
 
-    <h3>Load dependecies:</h3>
+    <h3>Generate your bookmarklet</h3>
 
     <p class="code code-html">
       <span>&lt;script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.13/angular.min.js"&gt;&lt;/script&gt;</span>
@@ -201,17 +197,23 @@
     <p class="code code-html">
       <span class="code-vial">&lt;qr <span class="code-yellow">text="qrcodeString"</span>&gt;&lt;/qr&gt;</span>
     </p>
+    
+    <p>
+      <label for="text">Introduce your XBMC ip:</label>
+    </p>
+    <p>
+      <textarea type="text" id="text" class="textarea" ng-model="xbmcIP" placeholder="Your XBMC ip"></textarea>
+    </p>
+    
+    <p class="code code-html">
+      <span>javascript:(function()%7Bvar regex %3D %2F'file'%3A '(.%2B%3F)'%2F%3Bvar url %3D document.URL%3Bvar ein %3D %2Feinthusan%2F%3Bvar allmyv %3D %2Fallmyvideos%2F%3Bvar vidto %3D %2Fvidto%2F%3Bvar playedto %3D %2Fplayed%2F%3Bvar megafiles %3D %2Fmegafiles%2F%3Bvar bestreams %3D %2Fbestreams%2F%3Bvar cbs %3D %2Fcbs%2F%3Bvar vk %3D %2Fvk%2F%3Bvar streamcloud %3D %2Fstreamcloud%2F%3Bvar vidspot %3D %2Fvidspot%2F%3Bvar magnovideo %3D %2Fmagnovideo%2F%3Bvar mega %3D %2Fmega%2F%3Bif(allmyv.test(url))%7Bregex%3D %2F"file" %3A "(.%2B%3F)"%2C%2F%3B%7Delse if(vidto.test(url))%7Bregex %3D %2Ffile_link %3D '(.%2B%3F)'%2F%3B%7Delse if(playedto.test(url))%7Bregex %3D %2Ffile%3A "(.%2B%3F)"%2F%3B%7Delse if(megafiles.test(url))%7Bregex %3D %2Ffile_link %3D '(.%2B%3F)'%2F%3B%7Delse if(bestreams.test(url))%7Bregex %3D %2Ffile%3A "(.%2B%3F)"%2F%3B%7Delse if(cbs.test(url))%7Bregex %3D %2Fvideo.settings.pid %3D '(.*%3F)'%2F%3B%7Delse if(vk.test(url))%7Bregex %3D %2F"url360"%3A"(.%2B%3F)"%2F%3B%7Delse if(streamcloud.test(url))%7Bregex %3D %2Ffile%3A "(.%2B%3F)"%2F%3B%7Delse if(vidspot.test(url))%7Bregex %3D %2F"file" %3A "(.%2B%3F)"%2C%2F%3B%7Delse if(magnovideo.test(url))%7Bregex %3D %2Fswf%3Fflv%3D(.%2B%3F)%2F%3B%7Dconsole.log(regex)%3Bvar StreamUrl %3D regex.exec(document.body.innerHTML)%5B1%5D%3Bvar ip %3D '{{xbmcIP}}'%3Bvar xbmc %3D 'http%3A%2F%2F'%2Bip%2B'%3A80%2Fjsonrpc%3Frequest%3D%7B"jsonrpc"%3A"2.0"%2C"method"%3A"Player.Open"%2C"params"%3A%7B"item"%3A%7B"file"%3A"'%2BStreamUrl%2B'"%7D%7D%7D'%3Bconsole.log(xbmc)%3BhttpGet(xbmc)%3Bfunction httpGet(theUrl)%7Bvar xmlHttp %3D null%3BxmlHttp %3D new XMLHttpRequest()%3BxmlHttp.open( "GET"%2C theUrl%2C false )%3BxmlHttp.send( null )%3B%7D%7D)()</span>
+    </p>
 
     <p>
       <qr text="qrcodeString" type-number="typeNumber" correction-level="correctionLevel" size="size" input-mode="inputMode" image="true"></qr>
     </p>
 
-    <p>
-      <label for="text">Text:</label>
-    </p>
-    <p>
-      <textarea type="text" id="text" class="textarea" ng-model="qrcodeString" placeholder="YOUR TEXT TO ENCODE"></textarea>
-    </p>
+    
 
     <h3>Optional attributes:</h3>
 
