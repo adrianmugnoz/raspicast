@@ -12,12 +12,11 @@ var streamcloud = /streamcloud/;
 var vidspot = /vidspot/;
 var magnovideo = /magnovideo/;
 var mega = /mega/;
-
+var local = /(192.|10.)/;
+var customUrl = '';
 
 if(allmyv.test(url)){
     regex= /"file" : "(.+?)",/;
-    
-    
 }
 else if(vidto.test(url)){
     regex = /file_link = '(.+?)'/;
@@ -46,12 +45,18 @@ else if(vidspot.test(url)){
 else if(magnovideo.test(url)){
     regex = /swf?flv=(.+?)/;
 }
+else if(local.test(url)){
+    customUrl = url;
+} else {
+    // custom url from user
+    customUrl = window.prompt("Please enter your url");
+}
 
 
-var StreamUrl = regex.exec(document.body.innerHTML)[1];
+var StreamUrl = customUrl || regex.exec(document.body.innerHTML)[1];
 
 
-var ip = '192.168.0.192';
+var ip = '192.168.0.104';
 
 var xbmc = 'http://'+ip+':80/jsonrpc?request={"jsonrpc":"2.0","method":"Player.Open","params":{"item":{"file":"'+StreamUrl+'"}}}';
     
