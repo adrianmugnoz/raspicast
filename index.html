@@ -219,6 +219,13 @@ border-radius: 4px;
     <p>
       <textarea type="text" id="text" class="textarea" ng-model="xbmcIP" placeholder="Your XBMC ip"></textarea>
     </p>
+    
+    <p>
+      <label for="text">Introduce your XBMC port:</label>
+    </p>
+    <p>
+      <textarea type="text" id="text" class="textarea" ng-model="xbmcPORT" placeholder="Your XBMC port" ng-init="xbmcPORT='80'"></textarea>
+    </p>
 
  <p>
       <label for="text">Bookmarklet code:</label>
@@ -227,7 +234,7 @@ border-radius: 4px;
 
 
     <p>
-      <textarea class="codearea" id="texto">javascript:(function()%7Bvar regex %3D %2F'file'%3A '(.%2B%3F)'%2F%3Bvar url %3D document.URL%3Bvar ein %3D %2Feinthusan%2F%3Bvar allmyv %3D %2Fallmyvideos%2F%3Bvar vidto %3D %2Fvidto%2F%3Bvar playedto %3D %2Fplayed%2F%3Bvar megafiles %3D %2Fmegafiles%2F%3Bvar bestreams %3D %2Fbestreams%2F%3Bvar cbs %3D %2Fcbs%2F%3Bvar vk %3D %2Fvk%2F%3Bvar streamcloud %3D %2Fstreamcloud%2F%3Bvar vidspot %3D %2Fvidspot%2F%3Bvar magnovideo %3D %2Fmagnovideo%2F%3Bvar mega %3D %2Fmega%2F%3Bif(allmyv.test(url))%7Bregex%3D %2F"file" %3A "(.%2B%3F)"%2C%2F%3B%7Delse if(vidto.test(url))%7Bregex %3D %2Ffile_link %3D '(.%2B%3F)'%2F%3B%7Delse if(playedto.test(url))%7Bregex %3D %2Ffile%3A "(.%2B%3F)"%2F%3B%7Delse if(megafiles.test(url))%7Bregex %3D %2Ffile_link %3D '(.%2B%3F)'%2F%3B%7Delse if(bestreams.test(url))%7Bregex %3D %2Ffile%3A "(.%2B%3F)"%2F%3B%7Delse if(cbs.test(url))%7Bregex %3D %2Fvideo.settings.pid %3D '(.*%3F)'%2F%3B%7Delse if(vk.test(url))%7Bregex %3D %2F"url360"%3A"(.%2B%3F)"%2F%3B%7Delse if(streamcloud.test(url))%7Bregex %3D %2Ffile%3A "(.%2B%3F)"%2F%3B%7Delse if(vidspot.test(url))%7Bregex %3D %2F"file" %3A "(.%2B%3F)"%2C%2F%3B%7Delse if(magnovideo.test(url))%7Bregex %3D %2Fswf%3Fflv%3D(.%2B%3F)%2F%3B%7Dconsole.log(regex)%3Bvar StreamUrl %3D regex.exec(document.body.innerHTML)%5B1%5D%3Bvar ip %3D '{{xbmcIP}}'%3Bvar xbmc %3D 'http%3A%2F%2F'%2Bip%2B'%3A80%2Fjsonrpc%3Frequest%3D%7B"jsonrpc"%3A"2.0"%2C"method"%3A"Player.Open"%2C"params"%3A%7B"item"%3A%7B"file"%3A"'%2BStreamUrl%2B'"%7D%7D%7D'%3Bconsole.log(xbmc)%3BhttpGet(xbmc)%3Bfunction httpGet(theUrl)%7Bvar xmlHttp %3D null%3BxmlHttp %3D new XMLHttpRequest()%3BxmlHttp.open( "GET"%2C theUrl%2C false )%3BxmlHttp.send( null )%3B%7D%7D)()</textarea>
+      <textarea class="codearea" id="texto">javascript:(function()%7Bvar%20regex%20%3D%20%2F'file'%3A%20'(.%2B%3F)'%2F%3Bvar%20url%20%3D%20document.URL%3Bvar%20ein%20%3D%20%2Feinthusan%2F%3Bvar%20allmyv%20%3D%20%2Fallmyvideos%2F%3Bvar%20vidto%20%3D%20%2Fvidto%2F%3Bvar%20playedto%20%3D%20%2Fplayed%2F%3Bvar%20megafiles%20%3D%20%2Fmegafiles%2F%3Bvar%20bestreams%20%3D%20%2Fbestreams%2F%3Bvar%20cbs%20%3D%20%2Fcbs%2F%3Bvar%20vk%20%3D%20%2Fvk%2F%3Bvar%20streamcloud%20%3D%20%2Fstreamcloud%2F%3Bvar%20vidspot%20%3D%20%2Fvidspot%2F%3Bvar%20magnovideo%20%3D%20%2Fmagnovideo%2F%3Bvar%20mega%20%3D%20%2Fmega%2F%3Bif(allmyv.test(url))%7Bregex%3D%20%2F%22file%22%20%3A%20%22(.%2B%3F)%22%2C%2F%3B%7Delse%20if(vidto.test(url))%7Bregex%20%3D%20%2Ffile_link%20%3D%20'(.%2B%3F)'%2F%3B%7Delse%20if(playedto.test(url))%7Bregex%20%3D%20%2Ffile%3A%20%22(.%2B%3F)%22%2F%3B%7Delse%20if(megafiles.test(url))%7Bregex%20%3D%20%2Ffile_link%20%3D%20'(.%2B%3F)'%2F%3B%7Delse%20if(bestreams.test(url))%7Bregex%20%3D%20%2Ffile%3A%20%22(.%2B%3F)%22%2F%3B%7Delse%20if(cbs.test(url))%7Bregex%20%3D%20%2Fvideo.settings.pid%20%3D%20'(.*%3F)'%2F%3B%7Delse%20if(vk.test(url))%7Bregex%20%3D%20%2F%22url360%22%3A%22(.%2B%3F)%22%2F%3B%7Delse%20if(streamcloud.test(url))%7Bregex%20%3D%20%2Ffile%3A%20%22(.%2B%3F)%22%2F%3B%7Delse%20if(vidspot.test(url))%7Bregex%20%3D%20%2F%22file%22%20%3A%20%22(.%2B%3F)%22%2C%2F%3B%7Delse%20if(magnovideo.test(url))%7Bregex%20%3D%20%2Fswf%3Fflv%3D(.%2B%3F)%2F%3B%7Dvar%20StreamUrl%20%3D%20regex.exec(document.body.innerHTML)%5B1%5D%3Bvar%20ip%20%3D%20'{{xbmcIP}}'%3Bvar%20port%20%3D%20'{{xbmcPORT}}'%3Bvar%20xbmc%20%3D%20'http%3A%2F%2F'%2Bip%2B'%3A'%2Bport%2B'%2Fjsonrpc%3Frequest%3D%7B%22jsonrpc%22%3A%222.0%22%2C%22method%22%3A%22Player.Open%22%2C%22params%22%3A%7B%22item%22%3A%7B%22file%22%3A%22'%2BStreamUrl%2B'%22%7D%7D%7D'%3BhttpGet(xbmc)%3Bfunction%20httpGet(theUrl)%7Bvar%20xmlHttp%20%3D%20null%3BxmlHttp%20%3D%20new%20XMLHttpRequest()%3BxmlHttp.open(%20%22GET%22%2C%20theUrl%2C%20false%20)%3BxmlHttp.send(%20null%20)%3B%7D%7D)()</textarea>
     </p>
 
     <!-- <p class="pre">
