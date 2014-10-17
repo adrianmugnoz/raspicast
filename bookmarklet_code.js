@@ -52,8 +52,9 @@ var StreamUrl = regex.exec(document.body.innerHTML)[1];
 
 
 var ip = '192.168.0.192';
+var port = '80';
 
-var xbmc = 'http://'+ip+':80/jsonrpc?request={"jsonrpc":"2.0","method":"Player.Open","params":{"item":{"file":"'+StreamUrl+'"}}}';
+var xbmc = 'http://'+ip+':'+port+'/jsonrpc?request={"jsonrpc":"2.0","method":"Player.Open","params":{"item":{"file":"'+StreamUrl+'"}}}';
     
 httpGet(xbmc);
 
