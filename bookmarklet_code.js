@@ -12,6 +12,7 @@ var streamcloud = /streamcloud/;
 var vidspot = /vidspot/;
 var magnovideo = /magnovideo/;
 var mega = /mega/;
+var rocvideo = /rocvideo/;
 
 
 if(allmyv.test(url)){
@@ -45,6 +46,8 @@ else if(vidspot.test(url)){
 }
 else if(magnovideo.test(url)){
     regex = /swf?flv=(.+?)/;
+} else if(rocvideo.test(url)){
+    regex = /<video x-webkit-airplay="allow" src="(.+?)"/;
 }
 
 
